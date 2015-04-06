@@ -1,10 +1,13 @@
 AngularAppService.factory('Session', [
-  '$location', '$http', '$q', function($location, $http, $q, $scope, $rootScope) {
+  '$location', '$http', '$q', function($location, $http, $q) {
+    $http.defaults.headers.common.Authorization = 'Basic YmVlcDpib29w';
+    var api_url = "http://180.211.96.180:8081/";
+    var _currentUser = null;
     return {
       login: function(email, password) {
         var deferred;
         deferred = $q.defer();
-        $http.post('api/login.php', {
+        $http.post(api_url + 'api/sessions', {
           user: {
             email: email,
             password: password
@@ -21,7 +24,7 @@ AngularAppService.factory('Session', [
       logout: function() {
         var deferred;
         deferred = $q.defer();
-        $http["delete"]("api/logout.php").then(function() {
+        $http["delete"](api_url + "api/sessions").then(function() {
           var _currentUser;
           _currentUser = null;
           return deferred.resolve();
@@ -31,7 +34,7 @@ AngularAppService.factory('Session', [
       register: function(firstName, lastName, email, password, confirmPassword) {
         var deferred;
         deferred = $q.defer();
-        $http.post('api/signup.php', {
+        $http.post(api_url + 'api/users', {
           user: {
             first_name: firstName,
             last_name: lastName,
@@ -50,6 +53,24 @@ AngularAppService.factory('Session', [
           return deferred.reject(data);
         });
         return deferred.promise;
+      },
+      getCurrentUser: function(forceUpdate) {
+        var deferred;
+        deferred = $q.defer();
+        if (!forceUpdate && this.isAuthenticated()) {
+          deferred.resolve(_currentUser);
+        } else {
+          $http.get(api_url + 'api/users').success(function(data) {
+            _currentUser = data.user;
+            return deferred.resolve(_currentUser);
+          }).error(function(data) {
+            return deferred.reject(data);
+          });
+        }
+        return deferred.promise;
+      },
+      isAuthenticated: function() {
+        return !!_currentUser;
       }
     };
   }
