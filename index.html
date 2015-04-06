@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="AngularApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AngularJS Application</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300,800|Open+Sans+Condensed:300,700|Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css'>
+  <link href="lib/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" />
+  <link href="lib/vidBg/css/vidBg.css" media="all" rel="stylesheet" />
+  <link href="css/style.css" media="all" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="wrap" ng-view></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/vidBg/js/vidBg.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-blocks/angular-blocks.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controllers/homeController.js"></script>
+  <script src="js/controllers/userController.js"></script>
+  <script src="js/controllers/logoutController.js"></script>
+  <script src="js/directives/commonDirectives.js"></script>
+  <script src="js/services/sessionService.js"></script>
+  <script src="js/services/userService.js"></script>
+</body>
+</html>

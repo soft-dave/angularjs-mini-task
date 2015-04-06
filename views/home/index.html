@@ -1,0 +1,48 @@
+<div data-extend-template="views/layouts/main.html">
+  <div data-block="content">
+    <div class="welcomeSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <a href="javascript:void(0)" class="btn btn-success" open-dialog modal-name="#myLoginModal">START</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <vid-bg resources="resources" params="params"></vid-bg>
+  </div>
+</div>
+
+<div class="modal fade" id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <form novalidate role="form" name="loginForm" ng-submit="login()">
+              <div class="clAll mb20"></div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <input type="text" name="email" ng-model="loginModel.email" type="email" id="loginEmail" placeholder="Email Address" required="" auto-focus>
+                  <div class="error">{{loginError}}</div>
+                </div>
+                <div class="cl">&nbsp;</div>
+                <div class="col-sm-12">
+                  <input name="password" ng-model="loginModel.password" type="password" id="loginPassword" placeholder="Password" required="">
+                </div>
+              </div>
+              <div class="bottomBtn mb20">
+                  <input type="submit" class="btn grd-org btnOrgLg fr" ng-disabled="loginForm.$invalid" value="Log in" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<loading></loading>
