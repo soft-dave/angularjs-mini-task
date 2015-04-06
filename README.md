@@ -19,3 +19,9 @@ you can find angular code in "js" folder of root path with structure like below:
   - filters
   - services
   - views
+
+====================================================
+
+You can review working test task with this url
+
+- http://180.211.96.180/#/
